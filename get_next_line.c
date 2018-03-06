@@ -61,8 +61,9 @@ int		get_next_line_one2(t_gnl_one *l, char **line, int size_line, int ret_r)
 		return (EXIT_ERROR);
 	*line = ft_memcpy(new_line, l->rest, size_line);
 	(*line)[size_line] = 0;
-	if (!(new_rest = malloc(l->rest_size - size_line)))
-		return (EXIT_ERROR);
+	if (ret_r)
+		if (!(new_rest = malloc(l->rest_size - size_line)))
+			return (EXIT_ERROR);
 	ft_memcpy(new_rest, l->rest + size_line + 1, l->rest_size - size_line);
 	free(l->rest);
 	l->rest = new_rest;
@@ -81,7 +82,7 @@ int		get_next_line_one(t_gnl_one *l, const int fd, char **line)
 	while (ret_r && (i = line_is_full(l->rest, l->rest_size)) == EXIT_ERROR)
 	{
 		if ((ret_r = read(fd, buf, BUFF_SIZE)) < 0)
-			return (EXIT_ERROR);
+			return (READ_ERROR);
 		if (!(tmp = malloc(l->rest_size + ret_r + 1)))
 			return (EXIT_ERROR);
 		if (l->rest)
