@@ -82,7 +82,7 @@ int		get_next_line_one(t_gnl_one *l, const int fd, char **line)
 	while (ret_r && (i = line_is_full(l->rest, l->rest_size)) == EXIT_ERROR)
 	{
 		if ((ret_r = read(fd, buf, BUFF_SIZE)) < 0)
-			return (READ_ERROR);
+			return (EXIT_ERROR);
 		if (!(tmp = malloc(l->rest_size + ret_r + 1)))
 			return (EXIT_ERROR);
 		if (l->rest)
