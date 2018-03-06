@@ -29,14 +29,14 @@ int		get_next_line_init(t_gnl **p, const int fd)
 	return ((*p)->list_size - 1);
 }
 
-int		line_is_full(char *line)
+int		line_is_full(char *line, int line_size)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!line)
 		return (EXIT_ERROR);
-	while (line[i])
+	while (i < line_size)
 	{
 		if (line[i] == '\n')
 			return (i);
@@ -59,11 +59,11 @@ int		get_next_line_one2(t_gnl_one *l, char **line, int size_line)
 	}
 	if (!(new_line = malloc(size_line + 1)))
 		return (EXIT_ERROR);
-	*line = strncpy(new_line, l->rest, size_line);
-	new_line[size_line] = '\0';
+	*line = ft_memcpy(new_line, l->rest, size_line);
+	(*line)[size_line] = 0;
 	if (!(new_rest = malloc(l->rest_size - size_line)))
 		return (EXIT_ERROR);
-	ft_strcpy(new_rest, l->rest + size_line + 1);
+	ft_memcpy(new_rest, l->rest + size_line + 1, l->rest_size - size_line);
 	free(l->rest);
 	l->rest = new_rest;
 	l->rest_size = l->rest_size - size_line - 1;
@@ -72,19 +72,21 @@ int		get_next_line_one2(t_gnl_one *l, char **line, int size_line)
 
 int		get_next_line_one(t_gnl_one *l, const int fd, char **line)
 {
-	char	buf[BUFF_SIZE + 1];
+	char	buf[BUFF_SIZE];
 	int		ret_read;
 	char	*tmp;
 	int		i;
 
 	ret_read = 1;
-	while (ret_read && (i = line_is_full(l->rest)) == EXIT_ERROR)
+	while (ret_read && (i = line_is_full(l->rest, l->rest_size)) == EXIT_ERROR)
 	{
 		if ((ret_read = read(fd, buf, BUFF_SIZE)) < 0)
+			return (READ_ERROR);
+		if (!(tmp = malloc(l->rest_size + ret_read + 1)))
 			return (EXIT_ERROR);
-		buf[ret_read] = '\0';
-		if (!(tmp = ft_strjoin(l->rest, buf)))
-			return (EXIT_ERROR);
+		if (l->rest)
+			ft_memcpy(tmp, l->rest, l->rest_size);
+		ft_memcpy(tmp + l->rest_size, buf, ret_read);
 		if (l->rest)
 			free(l->rest);
 		l->rest = tmp;
@@ -106,7 +108,7 @@ int		get_next_line(const int fd, char **line)
 		return (EXIT_ERROR);
 	if ((ret_r = get_next_line_one(&(p->list[rank]), fd, line)) == EXIT_ERROR)
 		return (EXIT_ERROR);
-	if (ret_r)
+	if (ret_r > 0)
 		return (1);
 	if (!(tmp = malloc(sizeof(t_gnl_one) * (p->list_size - 1))))
 		return (EXIT_ERROR);

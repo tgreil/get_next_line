@@ -5,9 +5,10 @@
 # include <unistd.h>
 # include "libft.h"
 
+# define READ_ERROR		-2
 # define EXIT_ERROR		-1
 # define EXIT_SUCCESS	0
-# define BUFF_SIZE		150
+# define BUFF_SIZE		32
 
 typedef struct		s_gnl_one
 {
