@@ -24,7 +24,6 @@ int main(int ac, char **av)
 			write(1, "\n", 1);
 			free(line);
 		}
-		get_next_line(fd, &line);
 		close(fd);
 	}
 	return (0);

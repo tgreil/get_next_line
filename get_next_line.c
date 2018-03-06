@@ -1,5 +1,5 @@
 #include "get_next_line.h"
-
+#include <stdio.h>
 int		get_next_line_init(t_gnl **p, const int fd)
 {
 	t_gnl_one	*new_list;
@@ -45,7 +45,7 @@ int		line_is_full(char *line, int line_size)
 	return (EXIT_ERROR);
 }
 
-int		get_next_line_one2(t_gnl_one *l, char **line, int size_line)
+int		get_next_line_one2(t_gnl_one *l, char **line, int size_line, int ret_r)
 {
 	char	*new_line;
 	char	*new_rest;
@@ -55,7 +55,7 @@ int		get_next_line_one2(t_gnl_one *l, char **line, int size_line)
 		*line = NULL;
 		if (l->rest)
 			free(l->rest);
-		return (EXIT_SUCCESS);
+		return (0);
 	}
 	if (!(new_line = malloc(size_line + 1)))
 		return (EXIT_ERROR);
@@ -67,34 +67,34 @@ int		get_next_line_one2(t_gnl_one *l, char **line, int size_line)
 	free(l->rest);
 	l->rest = new_rest;
 	l->rest_size = l->rest_size - size_line - 1;
-	return (EXIT_SUCCESS);
+	return (ret_r);
 }
 
 int		get_next_line_one(t_gnl_one *l, const int fd, char **line)
 {
 	char	buf[BUFF_SIZE];
-	int		ret_read;
+	int		ret_r;
 	char	*tmp;
 	int		i;
 
-	ret_read = 1;
-	while (ret_read && (i = line_is_full(l->rest, l->rest_size)) == EXIT_ERROR)
+	ret_r = 1;
+	while (ret_r && (i = line_is_full(l->rest, l->rest_size)) == EXIT_ERROR)
 	{
-		if ((ret_read = read(fd, buf, BUFF_SIZE)) < 0)
-			return (READ_ERROR);
-		if (!(tmp = malloc(l->rest_size + ret_read + 1)))
+		if ((ret_r = read(fd, buf, BUFF_SIZE)) < 0)
+			return (EXIT_ERROR);
+		if (!(tmp = malloc(l->rest_size + ret_r + 1)))
 			return (EXIT_ERROR);
 		if (l->rest)
 			ft_memcpy(tmp, l->rest, l->rest_size);
-		ft_memcpy(tmp + l->rest_size, buf, ret_read);
+		ft_memcpy(tmp + l->rest_size, buf, ret_r);
 		if (l->rest)
 			free(l->rest);
 		l->rest = tmp;
-		l->rest_size += ret_read;
+		l->rest_size += ret_r;
 	}
-	if (get_next_line_one2(l, line, i) == EXIT_ERROR)
-		return (EXIT_ERROR);
-	return (ret_read);
+	if (i < 0 && ret_r == 0 && l->rest_size)
+		i = l->rest_size;
+	return (get_next_line_one2(l, line, i, ret_r));
 }
 
 int		get_next_line(const int fd, char **line)
@@ -104,7 +104,7 @@ int		get_next_line(const int fd, char **line)
 	int				rank;
 	int				ret_r;
 
-	if ((rank = get_next_line_init(&p, fd)) == EXIT_ERROR)
+	if (fd < 0 || !line || (rank = get_next_line_init(&p, fd)) == EXIT_ERROR)
 		return (EXIT_ERROR);
 	if ((ret_r = get_next_line_one(&(p->list[rank]), fd, line)) == EXIT_ERROR)
 		return (EXIT_ERROR);
@@ -123,5 +123,5 @@ int		get_next_line(const int fd, char **line)
 		free(p);
 		p = NULL;
 	}
-	return (0);
+	return ((*line ? 1 : 0));
 }
