@@ -14,16 +14,5 @@
 
 void	ft_putnbr(int nb)
 {
-	if ((nb < 0 ? -nb : nb) < 10 && nb != INT_MIN)
-	{
-		if (nb < 0)
-			ft_putchar('-');
-		ft_putchar((nb < 0 ? -nb : nb) + '0');
-	}
-	else
-	{
-		ft_putnbr(nb / 10);
-		nb = nb % 10;
-		ft_putchar((nb < 0 ? -nb : nb) + '0');
-	}
+	ft_putnbr_fd(nb, 1);
 }
