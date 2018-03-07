@@ -1,6 +1,5 @@
 #include "libft.h"
 
-
 char		*ft_strsub(const char *s, unsigned int start, size_t len)
 {
 	char	*new;

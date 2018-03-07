@@ -69,7 +69,7 @@ static int	ft_print_memory_third(unsigned char *addr, unsigned int size)
 	return (i);
 }
 
-void	ft_print_memory(void *addr, size_t size)
+void		ft_print_memory(void *addr, size_t size)
 {
 	unsigned char	*un_addr;
 	size_t			i;

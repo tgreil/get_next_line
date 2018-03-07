@@ -90,7 +90,7 @@ static char	*ft_convert_base_2(int nb, char *base, int len)
 	return (new);
 }
 
-char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char		*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
 	int	nb;
 	int	from_len;
