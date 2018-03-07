@@ -1,5 +1,5 @@
 #include "get_next_line.h"
-#include <stdio.h>
+
 int		get_next_line_init(t_gnl **p, const int fd)
 {
 	t_gnl_one	*new_list;
