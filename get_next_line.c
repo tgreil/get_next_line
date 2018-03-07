@@ -62,12 +62,14 @@ int		get_next_line_one2(t_gnl_one *l, char **line, int size_line, int ret_r)
 	*line = ft_memcpy(new_line, l->rest, size_line);
 	(*line)[size_line] = 0;
 	if (ret_r)
+	{
 		if (!(new_rest = malloc(l->rest_size - size_line)))
 			return (EXIT_ERROR);
-	ft_memcpy(new_rest, l->rest + size_line + 1, l->rest_size - size_line);
-	free(l->rest);
-	l->rest = new_rest;
-	l->rest_size = l->rest_size - size_line - 1;
+			ft_memcpy(new_rest, l->rest + size_line + 1, l->rest_size - size_line);
+		free(l->rest);
+		l->rest = new_rest;
+		l->rest_size = l->rest_size - size_line - 1;
+	}
 	return (ret_r);
 }
 
