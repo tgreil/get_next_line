@@ -6,16 +6,18 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 17:10:09 by tgreil            #+#    #+#             */
-/*   Updated: 2018/03/04 15:02:08 by mgreil           ###   ########.fr       */
+/*   Updated: 2018/04/03 14:51:17 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+#include "libft.h"
+
+size_t	ft_strlen(char *str)
 {
-	int i;
+	size_t	i;
 
 	i = 0;
-	while (str && *str)
+	while (*str)
 	{
 		i++;
 		str++;

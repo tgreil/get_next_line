@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgreil <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:46:04 by tgreil            #+#    #+#             */
-/*   Updated: 2018/02/07 16:46:05 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/03 13:45:02 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ char	*ft_strstr(char *str, char *to_find)
 	int	j;
 
 	i = 0;
-	if (!to_find)
-		return (NULL);
 	if (!(*to_find))
 		return (str);
 	while (str[i])

@@ -6,7 +6,7 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/10 09:56:56 by tgreil            #+#    #+#             */
-/*   Updated: 2018/03/04 12:06:41 by mgreil           ###   ########.fr       */
+/*   Updated: 2018/04/03 15:01:46 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ char	**ft_strsplit(const char *str, char c)
 
 	i = 0;
 	tab_size = 0;
+	if (!str)
+		return (NULL);
 	while (str[i])
 	{
 		while (str[i] && c == str[i])

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tgreil <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 15:53:09 by tgreil            #+#    #+#             */
-/*   Updated: 2018/02/08 15:53:09 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/03 13:44:10 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_strdup(char *src)
 	int		i;
 
 	i = 0;
-	if (!src)
-		return (NULL);
 	while (src[i])
 		i++;
 	if (!(new = malloc(i + 1)))

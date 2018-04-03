@@ -6,7 +6,7 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:11:49 by tgreil            #+#    #+#             */
-/*   Updated: 2018/03/04 15:01:44 by mgreil           ###   ########.fr       */
+/*   Updated: 2018/04/03 13:39:06 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strcpy(char *dest, char *src)
 	int	i;
 
 	i = 0;
-	while (src && *src)
+	while (*src)
 	{
 		dest[i] = *src;
 		src++;
