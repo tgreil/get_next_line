@@ -6,20 +6,20 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:46:04 by tgreil            #+#    #+#             */
-/*   Updated: 2018/04/03 13:45:02 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/04 16:56:48 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 
-char	*ft_strstr(char *str, char *to_find)
+char	*ft_strstr(const char *str, const char *to_find)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	if (!(*to_find))
-		return (str);
+		return ((char *)str);
 	while (str[i])
 	{
 		if (str[i] == to_find[0])
@@ -28,7 +28,7 @@ char	*ft_strstr(char *str, char *to_find)
 			while (str[i + j] && to_find[j] && str[i + j] == to_find[j])
 				j++;
 			if (!to_find[j])
-				return (str + i);
+				return ((char *)str + i);
 		}
 		i++;
 	}

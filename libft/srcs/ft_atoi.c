@@ -6,13 +6,13 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 18:04:18 by tgreil            #+#    #+#             */
-/*   Updated: 2018/04/03 14:32:32 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/03 18:25:23 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_atoi(char *str)
+int			ft_atoi(const char *str)
 {
 	int		is_neg;
 	int		nbr;

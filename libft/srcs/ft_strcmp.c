@@ -6,13 +6,13 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 16:52:01 by tgreil            #+#    #+#             */
-/*   Updated: 2018/04/03 12:36:55 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/04 16:55:16 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strcmp(char *s1, char *s2)
+int	ft_strcmp(const char *s1, const char *s2)
 {
 	size_t	i;
 

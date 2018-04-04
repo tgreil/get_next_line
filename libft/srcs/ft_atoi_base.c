@@ -6,11 +6,11 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/08 09:21:28 by tgreil            #+#    #+#             */
-/*   Updated: 2018/04/03 12:33:41 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/03 18:25:12 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-static int	check_base(char *base)
+static int	check_base(const char *base)
 {
 	int	size;
 	int	i;
@@ -34,7 +34,7 @@ static int	check_base(char *base)
 	return (1);
 }
 
-static int	check_str(char *str, char *base, int base_len)
+static int	check_str(const char *str, const char *base, int base_len)
 {
 	int	i_str;
 	int	i_base;
@@ -54,7 +54,8 @@ static int	check_str(char *str, char *base, int base_len)
 	return (1);
 }
 
-static int	ft_atoi_base_rec(char *str, char *base, int base_len, int neg_value)
+static int	ft_atoi_base_rec(const char *str, const char *base,
+												int base_len, int neg_value)
 {
 	int	nbr;
 	int	i_base;
@@ -74,7 +75,7 @@ static int	ft_atoi_base_rec(char *str, char *base, int base_len, int neg_value)
 	return (nbr);
 }
 
-int			ft_atoi_base(char *str, char *base)
+int			ft_atoi_base(const char *str, char *base)
 {
 	int	base_len;
 	int	neg_value;

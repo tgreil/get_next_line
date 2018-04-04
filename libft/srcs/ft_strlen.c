@@ -6,13 +6,13 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/06 17:10:09 by tgreil            #+#    #+#             */
-/*   Updated: 2018/04/03 14:51:17 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/04 16:53:14 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 

@@ -6,14 +6,14 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/09 14:25:53 by tgreil            #+#    #+#             */
-/*   Updated: 2018/04/03 12:34:12 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/03 18:28:07 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-static int	ft_getnbr(char *nb, char *base, int len)
+static int	ft_getnbr(const char *nb, const char *base, int len)
 {
 	int	is_neg;
 	int	total;
@@ -37,7 +37,8 @@ static int	ft_getnbr(char *nb, char *base, int len)
 	return (total * is_neg);
 }
 
-static void	ft_convert_base_2_fill(int nb, char *base, int new_len, char *new)
+static void	ft_convert_base_2_fill(int nb, const char *base, int new_len,
+																	char *new)
 {
 	int	i;
 	int	tmp;
@@ -66,7 +67,7 @@ static void	ft_convert_base_2_fill(int nb, char *base, int new_len, char *new)
 	*new = '\0';
 }
 
-static char	*ft_convert_base_2(int nb, char *base, int len)
+static char	*ft_convert_base_2(int nb, const char *base, int len)
 {
 	char	*new;
 	int		tmp;
@@ -90,7 +91,8 @@ static char	*ft_convert_base_2(int nb, char *base, int len)
 	return (new);
 }
 
-char		*ft_convert_base(char *nbr, char *base_from, char *base_to)
+char		*ft_convert_base(const char *nbr, const char *base_from,
+															const char *base_to)
 {
 	int	nb;
 	int	from_len;

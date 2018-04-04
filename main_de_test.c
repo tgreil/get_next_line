@@ -16,11 +16,11 @@ int main(int ac, char **av)
 		return (-1);
 	for (i = 1; i < ac; i++)
 	{
-		if ((fd = open(av[1], O_RDONLY)) < 0)
+		if ((fd = open(av[i], O_RDONLY)) < 0)
 			return (-1);
 		while ((ret = get_next_line(fd, &line)) > 0)
 		{
-			write(1, line, strlen(line));
+			write(1, line, ft_strlen(line));
 			write(1, "\n", 1);
 			free(line);
 		}

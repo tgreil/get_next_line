@@ -6,11 +6,11 @@
 /*   By: tgreil <tgreil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/07 17:55:26 by tgreil            #+#    #+#             */
-/*   Updated: 2018/04/03 12:36:38 by tgreil           ###   ########.fr       */
+/*   Updated: 2018/04/04 16:54:01 by tgreil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcat(char *dest, char *src)
+char	*ft_strcat(char *dest, const char *src)
 {
 	int	i;
 	int	n;
